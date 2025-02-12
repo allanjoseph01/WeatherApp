@@ -1,0 +1,54 @@
+body{
+    background-image:url(../public/images/background\ image.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#ttl{
+    background-color: rgb(102, 92, 238);
+    height: 450px;
+    width: 700px;
+    margin-left: 280px;
+    margin-top: 50px;
+    border: 3px solid black;
+    box-shadow: 5px 1px 15px 10px rgb(171, 171, 171);
+    border-radius: 20px;
+}
+h1{
+    margin-left: 220px;
+    margin-top: 20px;
+}
+#output{
+    color: black;
+}
+#name{
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+}
+#desc{
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+}
+#big{
+    display: flex;
+    margin-top: 25px;
+    justify-content: space-around;
+}
+#temperatureDetails{
+    display: flex;
+}
+#windSpeedAndOther{
+    display: flex;
+}
+#descIcon img{
+    width: 150px;
+    height: 150px;
+    margin-right: 10px;
+}
+#windSpeedAndOther img{
+    width: 80px;
+    height: 60px;
+    margin-right: 10px;
+    margin-top: 5px;
+}
