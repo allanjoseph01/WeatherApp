@@ -1,10 +1,9 @@
 body{
-    background-image:url(../public/images/background\ image.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
 }
 #ttl{
-    background-color: rgb(102, 92, 238);
+    background-color: rgb(157, 151, 235);
     height: 450px;
     width: 700px;
     margin-left: 280px;

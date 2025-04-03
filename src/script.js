@@ -1,18 +1,30 @@
-async function weatherReport(){
-    const city=document.getElementById('cit').value;
-    if(!city){
+async function weatherReport() {
+    const city = document.getElementById('cit').value.trim();
+    if (!city) {
         alert("Please enter a city!");
-        return ;
+        return;
     }
-    const url=`https://wttr.in/${city}?format=j1`;
+
+    const url = `https://wttr.in/${city}?format=j1`;
+
     try {
         const response = await fetch(url);
         const data = await response.json();
-        const currentCondition = data.current_condition[0];
-        const weather = data.weather[0];
+
+        if (!data.nearest_area || data.nearest_area.length === 0) {
+            throw new Error("City not found");
+        }
+
         const cityName = data.nearest_area[0].areaName[0].value;
         const country = data.nearest_area[0].country[0].value;
-        const avgTemp = (parseFloat(weather.avgtempC)).toFixed(1);
+
+        if (cityName.toLowerCase() !== city.toLowerCase()) {
+            throw new Error("City not found");
+        }
+        console.log(data);
+        const currentCondition = data.current_condition[0];
+        const weather = data.weather[0];
+        const avgTemp = parseFloat(weather.avgtempC).toFixed(1);
         const minTemp = weather.mintempC;
         const maxTemp = weather.maxtempC;
         const windSpeed = currentCondition.windspeedKmph;
@@ -21,16 +33,18 @@ async function weatherReport(){
         let weatherIcon = "./public/images/sunny.png";
         if (weatherDesc.includes("Partly sunny") || weatherDesc.includes("Partly cloudy")) {
             weatherIcon = "./public/images/partly sunnyCloudy.png";
-        } else if (weatherDesc.includes("sunny")) {
+        } else if (weatherDesc.includes("Sunny")) {
             weatherIcon = "./public/images/sunny.png";
-        } else if (weatherDesc.includes("cloudy")) {
+        } else if (weatherDesc.includes("Cloudy")) {
             weatherIcon = "./public/images/cloudy.png";
-        } else if (weatherDesc.includes("rain") || weatherDesc.includes("drizzle")) {
+        } else if (weatherDesc.includes("Rain") || weatherDesc.includes("Drizzle") || weatherDesc.includes("rain")) {
             weatherIcon = "./public/images/rainy.png";
-        } else if (weatherDesc.includes("thunder") || weatherDesc.includes("storm")) {
+        } else if (weatherDesc.includes("Thunder") || weatherDesc.includes("Storm")) {
             weatherIcon = "./public/images/thunder.png";
         } else if (weatherDesc.includes("snow")) {
             weatherIcon = "./public/images/snow.png";
+        } else if (weatherDesc.includes("Mist")) {
+            weatherIcon = "./public/images/mist.png";
         }
 
         document.getElementById('output').innerHTML = `
@@ -57,8 +71,7 @@ async function weatherReport(){
                 </div>
             </div>
         `;
-
     } catch (error) {
-        document.getElementById('output').innerHTML = `<p class='error'>Failed to fetch weather data. please enter a valid city</p>`;
+        document.getElementById('output').innerHTML = `<p class='error'>City not found. Please enter a valid city.</p>`;
     }
 }
