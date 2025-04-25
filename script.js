@@ -29,21 +29,21 @@ async function weatherReport() {
         const windSpeed = currentCondition.windspeedKmph;
         const weatherDesc = currentCondition.weatherDesc[0].value;
 
-        let weatherIcon = "/images/sunny.png";
+        let weatherIcon = "./public/images/sunny.png";
         if (weatherDesc.includes("Partly sunny") || weatherDesc.includes("Partly cloudy")) {
-            weatherIcon = "/images/partly sunnyCloudy.png";
+            weatherIcon = "./public/images/partly sunnyCloudy.png";
         } else if (weatherDesc.includes("Sunny")) {
-            weatherIcon = "/images/sunny.png";
+            weatherIcon = "./public/images/sunny.png";
         } else if (weatherDesc.includes("Cloudy")) {
-            weatherIcon = "/images/cloudy.png";
+            weatherIcon = "./public/images/cloudy.png";
         } else if (weatherDesc.includes("Rain") || weatherDesc.includes("Drizzle") || weatherDesc.includes("rain")) {
-            weatherIcon = "/images/rainy.png";
+            weatherIcon = "./public/images/rainy.png";
         } else if (weatherDesc.includes("Thunder") || weatherDesc.includes("Storm")) {
-            weatherIcon = "/images/thunder.png";
+            weatherIcon = "./public/images/thunder.png";
         } else if (weatherDesc.includes("snow")) {
-            weatherIcon = "/images/snow.png";
+            weatherIcon = "./public/images/snow.png";
         } else if (weatherDesc.includes("Mist")) {
-            weatherIcon = "/images/mist.png";
+            weatherIcon = "./public/images/mist.png";
         }
 
         document.getElementById('output').innerHTML = `
