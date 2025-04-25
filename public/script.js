@@ -29,21 +29,21 @@ async function weatherReport() {
         const windSpeed = currentCondition.windspeedKmph;
         const weatherDesc = currentCondition.weatherDesc[0].value;
 
-        let weatherIcon = "./public/images/sunny.png";
+        let weatherIcon = "./images/sunny.png";
         if (weatherDesc.includes("Partly sunny") || weatherDesc.includes("Partly cloudy")) {
-            weatherIcon = "./public/images/partly sunnyCloudy.png";
+            weatherIcon = "./images/partly sunnyCloudy.png";
         } else if (weatherDesc.includes("Sunny")) {
-            weatherIcon = "./public/images/sunny.png";
+            weatherIcon = "./images/sunny.png";
         } else if (weatherDesc.includes("Cloudy")) {
-            weatherIcon = "./public/images/cloudy.png";
+            weatherIcon = "./images/cloudy.png";
         } else if (weatherDesc.includes("Rain") || weatherDesc.includes("Drizzle") || weatherDesc.includes("rain")) {
-            weatherIcon = "./public/images/rainy.png";
+            weatherIcon = "./images/rainy.png";
         } else if (weatherDesc.includes("Thunder") || weatherDesc.includes("Storm")) {
-            weatherIcon = "./public/images/thunder.png";
+            weatherIcon = "./images/thunder.png";
         } else if (weatherDesc.includes("snow")) {
-            weatherIcon = "./public/images/snow.png";
+            weatherIcon = "./images/snow.png";
         } else if (weatherDesc.includes("Mist")) {
-            weatherIcon = "./public/images/mist.png";
+            weatherIcon = "./images/mist.png";
         }
 
         document.getElementById('output').innerHTML = `
@@ -62,7 +62,7 @@ async function weatherReport() {
                     </div>
                 </div>
                 <div id="windSpeedAndOther">
-                    <img src="./public/images/wind 2.png" alt="Wind Icon">
+                    <img src="./images/wind 2.png" alt="Wind Icon">
                     <div id="extra">
                         <p>Wind Speed: ${windSpeed} km/h</p>
                         <p>Humidity: ${currentCondition.humidity}%</p>
